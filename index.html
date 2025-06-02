@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Savory Bites - Menu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#FF6B35',secondary:'#2EC4B6'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+.nav-link {
+position: relative;
+}
+.nav-link::after {
+content: '';
+position: absolute;
+width: 0;
+height: 2px;
+bottom: -4px;
+left: 0;
+background-color: #FF6B35;
+transition: width 0.3s;
+}
+.nav-link:hover::after, .nav-link.active::after {
+width: 100%;
+}
+.custom-checkbox {
+position: relative;
+display: inline-block;
+width: 20px;
+height: 20px;
+margin-right: 8px;
+}
+.custom-checkbox input {
+opacity: 0;
+width: 0;
+height: 0;
+}
+.checkmark {
+position: absolute;
+top: 0;
+left: 0;
+height: 20px;
+width: 20px;
+background-color: #fff;
+border: 2px solid #e5e7eb;
+border-radius: 4px;
+}
+.custom-checkbox input:checked ~ .checkmark {
+background-color: #FF6B35;
+border-color: #FF6B35;
+}
+.checkmark:after {
+content: "";
+position: absolute;
+display: none;
+}
+.custom-checkbox input:checked ~ .checkmark:after {
+display: block;
+}
+.custom-checkbox .checkmark:after {
+left: 6px;
+top: 2px;
+width: 5px;
+height: 10px;
+border: solid white;
+border-width: 0 2px 2px 0;
+transform: rotate(45deg);
+}
+.price-slider {
+-webkit-appearance: none;
+width: 100%;
+height: 6px;
+background: #e5e7eb;
+border-radius: 5px;
+outline: none;
+}
+.price-slider::-webkit-slider-thumb {
+-webkit-appearance: none;
+appearance: none;
+width: 18px;
+height: 18px;
+border-radius: 50%;
+background: #FF6B35;
+cursor: pointer;
+}
+.price-slider::-moz-range-thumb {
+width: 18px;
+height: 18px;
+border-radius: 50%;
+background: #FF6B35;
+cursor: pointer;
+}
+.category-card.active {
+border-color: #FF6B35;
+background-color: rgba(255, 107, 53, 0.05);
+}
+.category-card.active .category-icon {
+background-color: rgba(255, 107, 53, 0.2);
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+input[type="number"] {
+-moz-appearance: textfield;
+}
+.custom-select {
+appearance: none;
+background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23666666'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+background-repeat: no-repeat;
+background-position: right 0.5rem center;
+background-size: 1.5em 1.5em;
+}
+</style>
+</head>
+<body class="bg-gray-50 text-gray-800 min-h-screen">
+<!-- Header -->
+<header class="bg-white shadow-sm sticky top-0 z-50">
+<div class="container mx-auto px-4 py-4 flex items-center justify-between">
+<a href="#" class="text-3xl font-['Pacifico'] text-primary">Ghulam Qadir Kalhoro</a>
+<nav class="hidden md:flex items-center space-x-8">
+<a href="https://readdy.ai/home/55e88bb8-a86a-4adc-bd3a-ca8f4ff0c6b1/617d1b31-8964-49e8-b900-13a8e05edf97" data-readdy="true" class="nav-link font-medium">Home</a>
+<a href="#" class="nav-link active font-medium">Menu</a>
+<a href="#" class="nav-link font-medium">Services</a>
+<a href="#" class="nav-link font-medium">About</a>
+<a href="#" class="nav-link font-medium">Contact</a>
+<a href="#" class="nav-link font-medium">Help</a>
+</nav>
+<div class="flex items-center space-x-4">
+<div class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 cursor-pointer">
+<i class="ri-search-line text-gray-600"></i>
+</div>
+<div class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 cursor-pointer relative">
+<i class="ri-shopping-cart-line text-gray-600"></i>
+<span class="absolute -top-1 -right-1 bg-primary text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">3</span>
+</div>
+<button class="bg-primary text-white px-6 py-2 !rounded-button whitespace-nowrap">Order Now</button>
+</div>
+<div class="md:hidden w-10 h-10 flex items-center justify-center">
+<i class="ri-menu-line text-xl"></i>
+</div>
+</div>
+</header>
+
+<!-- Search and Filter Section -->
+<section class="bg-white py-6 shadow-sm">
+<div class="container mx-auto px-4">
+<div class="relative">
+<input type="text" placeholder="Search for dishes, ingredients, or categories..." class="w-full px-4 py-3 pl-12 pr-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm">
+<div class="absolute left-4 top-1/2 transform -translate-y-1/2">
+<i class="ri-search-line text-gray-400"></i>
+</div>
+</div>
+
+<div class="mt-6 grid grid-cols-1 md:grid-cols-4 gap-6">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Category</label>
+<div class="relative">
+<select class="custom-select w-full px-4 py-2 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm pr-8">
+<option value="">All Categories</option>
+<option value="burgers">Burgers</option>
+<option value="pizza">Pizza</option>
+<option value="pasta">Pasta</option>
+<option value="salads">Salads</option>
+<option value="drinks">Drinks</option>
+<option value="desserts">Desserts</option>
+</select>
+</div>
+</div>
+
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Dietary Preferences</label>
+<div class="flex flex-wrap gap-4">
+<label class="inline-flex items-center">
+<span class="custom-checkbox">
+<input type="checkbox" class="hidden">
+<span class="checkmark"></span>
+</span>
+<span class="text-sm">Vegetarian</span>
+</label>
+<label class="inline-flex items-center">
+<span class="custom-checkbox">
+<input type="checkbox" class="hidden">
+<span class="checkmark"></span>
+</span>
+<span class="text-sm">Vegan</span>
+</label>
+<label class="inline-flex items-center">
+<span class="custom-checkbox">
+<input type="checkbox" class="hidden">
+<span class="checkmark"></span>
+</span>
+<span class="text-sm">Gluten-Free</span>
+</label>
+</div>
+</div>
+
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Price Range</label>
+<div class="px-2">
+<input type="range" min="0" max="50" value="25" class="price-slider w-full" id="price-range">
+<div class="flex justify-between mt-2 text-sm text-gray-600">
+<span>$0</span>
+<span id="price-value">$25</span>
+<span>$50</span>
+</div>
+</div>
+</div>
+
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Sort By</label>
+<div class="relative">
+<select class="custom-select w-full px-4 py-2 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm pr-8">
+<option value="popular">Most Popular</option>
+<option value="price-low">Price: Low to High</option>
+<option value="price-high">Price: High to Low</option>
+<option value="rating">Highest Rated</option>
+<option value="new">Newest Items</option>
+</select>
+</div>
+</div>
+</div>
+
+<div class="mt-6 flex flex-wrap gap-2">
+<span class="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-primary text-sm">
+Vegetarian
+<button class="ml-1">
+<i class="ri-close-line"></i>
+</button>
+</span>
+<span class="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-primary text-sm">
+$10 - $25
+<button class="ml-1">
+<i class="ri-close-line"></i>
+</button>
+</span>
+<button class="text-sm text-primary">Clear All</button>
+</div>
+</div>
+</section>
+
+<!-- Categories Section -->
+<section class="py-8">
+<div class="container mx-auto px-4">
+<h2 class="text-2xl font-bold mb-6">Menu Categories</h2>
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+<div class="category-card active border-2 border-gray-200 rounded-lg p-4 text-center cursor-pointer transition-all hover:shadow-md">
+<div class="category-icon w-16 h-16 mx-auto mb-3 flex items-center justify-center bg-gray-100 rounded-full">
+<i class="ri-burger-line text-primary text-2xl"></i>
+</div>
+<h3 class="font-medium">Burgers</h3>
+<p class="text-xs text-gray-500 mt-1">12 items</p>
+</div>
+<div class="category-card border-2 border-gray-200 rounded-lg p-4 text-center cursor-pointer transition-all hover:shadow-md">
+<div class="category-icon w-16 h-16 mx-auto mb-3 flex items-center justify-center bg-gray-100 rounded-full">
+<i class="ri-pizza-line text-gray-600 text-2xl"></i>
+</div>
+<h3 class="font-medium">Pizza</h3>
+<p class="text-xs text-gray-500 mt-1">8 items</p>
+</div>
+<div class="category-card border-2 border-gray-200 rounded-lg p-4 text-center cursor-pointer transition-all hover:shadow-md">
+<div class="category-icon w-16 h-16 mx-auto mb-3 flex items-center justify-center bg-gray-100 rounded-full">
+<i class="ri-bowl-line text-gray-600 text-2xl"></i>
+</div>
+<h3 class="font-medium">Pasta</h3>
+<p class="text-xs text-gray-500 mt-1">10 items</p>
+</div>
+<div class="category-card border-2 border-gray-200 rounded-lg p-4 text-center cursor-pointer transition-all hover:shadow-md">
+<div class="category-icon w-16 h-16 mx-auto mb-3 flex items-center justify-center bg-gray-100 rounded-full">
+<i class="ri-salad-line text-gray-600 text-2xl"></i>
+</div>
+<h3 class="font-medium">Salads</h3>
+<p class="text-xs text-gray-500 mt-1">6 items</p>
+</div>
+<div class="category-card border-2 border-gray-200 rounded-lg p-4 text-center cursor-pointer transition-all hover:shadow-md">
+<div class="category-icon w-16 h-16 mx-auto mb-3 flex items-center justify-center bg-gray-100 rounded-full">
+<i class="ri-cup-line text-gray-600 text-2xl"></i>
+</div>
+<h3 class="font-medium">Drinks</h3>
+<p class="text-xs text-gray-500 mt-1">14 items</p>
+</div>
+<div class="category-card border-2 border-gray-200 rounded-lg p-4 text-center cursor-pointer transition-all hover:shadow-md">
+<div class="category-icon w-16 h-16 mx-auto mb-3 flex items-center justify-center bg-gray-100 rounded-full">
+<i class="ri-cake-3-line text-gray-600 text-2xl"></i>
+</div>
+<h3 class="font-medium">Desserts</h3>
+<p class="text-xs text-gray-500 mt-1">9 items</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Menu Items Section -->
+<section class="py-8">
+<div class="container mx-auto px-4">
+<div class="flex justify-between items-center mb-6">
+<h2 class="text-2xl font-bold">Burgers (12)</h2>
+<p class="text-gray-500">Showing 12 items</p>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+<!-- Menu Item 1 -->
+<div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<div class="h-48 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=A%2520gourmet%2520classic%2520cheeseburger%2520with%2520a%2520juicy%2520beef%2520patty%252C%2520melted%2520cheddar%2520cheese%252C%2520fresh%2520lettuce%252C%2520tomato%252C%2520and%2520special%2520sauce%2520on%2520a%2520toasted%2520brioche%2520bun.%2520The%2520burger%2520is%2520presented%2520on%2520a%2520clean%2520white%2520plate%2520with%2520a%2520minimalist%2520background.%2520Professional%2520food%2520photography%2520with%2520perfect%2520lighting%2520highlighting%2520the%2520texture%2520and%2520colors%2520of%2520the%2520ingredients.&width=600&height=400&seq=101&orientation=landscape" alt="Classic Cheeseburger" class="w-full h-full object-cover object-top">
+</div>
+<div class="p-4">
+<div class="flex items-center justify-between mb-2">
+<h3 class="font-bold">Classic Cheeseburger</h3>
+<span class="bg-primary/10 text-primary text-sm px-2 py-1 rounded">Popular</span>
+</div>
+<p class="text-gray-600 text-sm mb-3">Juicy beef patty with melted cheddar, fresh lettuce, tomato, and our special sauce on a brioche bun.</p>
+<div class="flex items-center justify-between">
+<span class="font-bold text-lg">$12.99</span>
+<button class="w-10 h-10 flex items-center justify-center bg-primary text-white rounded-full !rounded-button">
+<i class="ri-add-line"></i>
+</button>
+</div>
+</div>
+</div>
+
+<!-- Menu Item 2 -->
+<div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<div class="h-48 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=A%2520deluxe%2520bacon%2520cheeseburger%2520with%2520a%2520thick%2520beef%2520patty%252C%2520crispy%2520bacon%2520strips%252C%2520melted%2520cheese%252C%2520lettuce%252C%2520tomato%252C%2520and%2520onion%2520on%2520a%2520sesame%2520seed%2520bun.%2520The%2520burger%2520is%2520presented%2520on%2520a%2520clean%2520white%2520plate%2520with%2520a%2520minimalist%2520background.%2520Professional%2520food%2520photography%2520with%2520perfect%2520lighting%2520highlighting%2520the%2520texture%2520and%2520colors%2520of%2520the%2520ingredients.&width=600&height=400&seq=102&orientation=landscape" alt="Bacon Deluxe Burger" class="w-full h-full object-cover object-top">
+</div>
+<div class="p-4">
+<div class="flex items-center justify-between mb-2">
+<h3 class="font-bold">Bacon Deluxe Burger</h3>
+<span class="bg-primary/10 text-primary text-sm px-2 py-1 rounded">Popular</span>
+</div>
+<p class="text-gray-600 text-sm mb-3">Double beef patty with crispy bacon, cheddar cheese, caramelized onions, and BBQ sauce.</p>
+<div class="flex items-center justify-between">
+<span class="font-bold text-lg">$15.99</span>
+<button class="w-10 h-10 flex items-center justify-center bg-primary text-white rounded-full !rounded-button">
+<i class="ri-add-line"></i>
+</button>
+</div>
+</div>
+</div>
+
+<!-- Menu Item 3 -->
+<div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<div class="h-48 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=A%2520gourmet%2520mushroom%2520swiss%2520burger%2520with%2520a%2520juicy%2520beef%2520patty%252C%2520sauteed%2520mushrooms%252C%2520melted%2520swiss%2520cheese%252C%2520and%2520truffle%2520aioli%2520on%2520a%2520toasted%2520artisan%2520bun.%2520The%2520burger%2520is%2520presented%2520on%2520a%2520clean%2520white%2520plate%2520with%2520a%2520minimalist%2520background.%2520Professional%2520food%2520photography%2520with%2520perfect%2520lighting%2520highlighting%2520the%2520texture%2520and%2520colors%2520of%2520the%2520ingredients.&width=600&height=400&seq=103&orientation=landscape" alt="Mushroom Swiss Burger" class="w-full h-full object-cover object-top">
+</div>
+<div class="p-4">
+<div class="flex items-center justify-between mb-2">
+<h3 class="font-bold">Mushroom Swiss Burger</h3>
+<span class="bg-yellow-100 text-yellow-700 text-sm px-2 py-1 rounded">New</span>
+</div>
+<p class="text-gray-600 text-sm mb-3">Beef patty topped with sautéed mushrooms, melted Swiss cheese, and truffle aioli.</p>
+<div class="flex items-center justify-between">
+<span class="font-bold text-lg">$14.99</span>
+<button class="w-10 h-10 flex items-center justify-center bg-primary text-white rounded-full !rounded-button">
+<i class="ri-add-line"></i>
+</button>
+</div>
+</div>
+</div>
+
+<!-- Menu Item 4 -->
+<div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<div class="h-48 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=A%2520delicious%2520veggie%2520burger%2520with%2520a%2520plant-based%2520patty%252C%2520fresh%2520avocado%2520slices%252C%2520lettuce%252C%2520tomato%252C%2520and%2520vegan%2520mayo%2520on%2520a%2520whole%2520grain%2520bun.%2520The%2520burger%2520is%2520presented%2520on%2520a%2520clean%2520white%2520plate%2520with%2520a%2520minimalist%2520background.%2520Professional%2520food%2520photography%2520with%2520perfect%2520lighting%2520highlighting%2520the%2520fresh%2520ingredients%2520and%2520vibrant%2520colors.&width=600&height=400&seq=104&orientation=landscape" alt="Veggie Avocado Burger" class="w-full h-full object-cover object-top">
+</div>
+<div class="p-4">
+<div class="flex items-center justify-between mb-2">
+<h3 class="font-bold">Veggie Avocado Burger</h3>
+<span class="bg-green-100 text-green-600 text-sm px-2 py-1 rounded">Vegetarian</span>
+</div>
+<p class="text-gray-600 text-sm mb-3">Plant-based patty with fresh avocado, lettuce, tomato, and vegan mayo on a whole grain bun.</p>
+<div class="flex items-center justify-between">
+<span class="font-bold text-lg">$13.99</span>
+<button class="w-10 h-10 flex items-center justify-center bg-primary text-white rounded-full !rounded-button">
+<i class="ri-add-line"></i>
+</button>
+</div>
+</div>
+</div>
+
+<!-- Menu Item 5 -->
+<div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<div class="h-48 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=A%2520spicy%2520jalapeno%2520burger%2520with%2520a%2520juicy%2520beef%2520patty%252C%2520pepper%2520jack%2520cheese%252C%2520fresh%2520jalapeno%2520slices%252C%2520lettuce%252C%2520and%2520spicy%2520mayo%2520on%2520a%2520toasted%2520brioche%2520bun.%2520The%2520burger%2520is%2520presented%2520on%2520a%2520clean%2520white%2520plate%2520with%2520a%2520minimalist%2520background.%2520Professional%2520food%2520photography%2520with%2520perfect%2520lighting%2520highlighting%2520the%2520texture%2520and%2520colors%2520of%2520the%2520ingredients.&width=600&height=400&seq=105&orientation=landscape" alt="Spicy Jalapeño Burger" class="w-full h-full object-cover object-top">
+</div>
+<div class="p-4">
+<div class="flex items-center justify-between mb-2">
+<h3 class="font-bold">Spicy Jalapeño Burger</h3>
+<span class="bg-red-100 text-red-600 text-sm px-2 py-1 rounded">Spicy</span>
+</div>
+<p class="text-gray-600 text-sm mb-3">Beef patty with pepper jack cheese, fresh jalapeños, lettuce, and spicy mayo.</p>
+<div class="flex items-center justify-between">
+<span class="font-bold text-lg">$13.99</span>
+<button class="w-10 h-10 flex items-center justify-center bg-primary text-white rounded-full !rounded-button">
+<i class="ri-add-line"></i>
+</button>
+</div>
+</div>
+</div>
+
+<!-- Menu Item 6 -->
+<div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<div class="h-48 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=A%2520gourmet%2520BBQ%2520burger%2520with%2520a%2520juicy%2520beef%2520patty%252C%2520crispy%2520onion%2520rings%252C%2520melted%2520cheddar%2520cheese%252C%2520lettuce%252C%2520and%2520tangy%2520BBQ%2520sauce%2520on%2520a%2520toasted%2520brioche%2520bun.%2520The%2520burger%2520is%2520presented%2520on%2520a%2520clean%2520white%2520plate%2520with%2520a%2520minimalist%2520background.%2520Professional%2520food%2520photography%2520with%2520perfect%2520lighting%2520highlighting%2520the%2520texture%2520and%2520colors%2520of%2520the%2520ingredients.&width=600&height=400&seq=106&orientation=landscape" alt="BBQ Onion Ring Burger" class="w-full h-full object-cover object-top">
+</div>
+<div class="p-4">
+<div class="flex items-center justify-between mb-2">
+<h3 class="font-bold">BBQ Onion Ring Burger</h3>
+<span class="bg-primary/10 text-primary text-sm px-2 py-1 rounded">Popular</span>
+</div>
+<p class="text-gray-600 text-sm mb-3">Beef patty with crispy onion rings, cheddar cheese, lettuce, and tangy BBQ sauce.</p>
+<div class="flex items-center justify-between">
+<span class="font-bold text-lg">$14.99</span>
+<button class="w-10 h-10 flex items-center justify-center bg-primary text-white rounded-full !rounded-button">
+<i class="ri-add-line"></i>
+</button>
+</div>
+</div>
+</div>
+
+<!-- Menu Item 7 -->
+<div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<div class="h-48 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=A%2520gourmet%2520blue%2520cheese%2520burger%2520with%2520a%2520juicy%2520beef%2520patty%252C%2520crumbled%2520blue%2520cheese%252C%2520caramelized%2520onions%252C%2520arugula%252C%2520and%2520balsamic%2520glaze%2520on%2520a%2520toasted%2520artisan%2520bun.%2520The%2520burger%2520is%2520presented%2520on%2520a%2520clean%2520white%2520plate%2520with%2520a%2520minimalist%2520background.%2520Professional%2520food%2520photography%2520with%2520perfect%2520lighting%2520highlighting%2520the%2520texture%2520and%2520colors%2520of%2520the%2520ingredients.&width=600&height=400&seq=107&orientation=landscape" alt="Blue Cheese Burger" class="w-full h-full object-cover object-top">
+</div>
+<div class="p-4">
+<div class="flex items-center justify-between mb-2">
+<h3 class="font-bold">Blue Cheese Burger</h3>
+</div>
+<p class="text-gray-600 text-sm mb-3">Beef patty with crumbled blue cheese, caramelized onions, arugula, and balsamic glaze.</p>
+<div class="flex items-center justify-between">
+<span class="font-bold text-lg">$15.99</span>
+<button class="w-10 h-10 flex items-center justify-center bg-primary text-white rounded-full !rounded-button">
+<i class="ri-add-line"></i>
+</button>
+</div>
+</div>
+</div>
+
+<!-- Menu Item 8 -->
+<div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<div class="h-48 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=A%2520gourmet%2520double%2520cheeseburger%2520with%2520two%2520juicy%2520beef%2520patties%252C%2520double%2520melted%2520American%2520cheese%252C%2520lettuce%252C%2520tomato%252C%2520pickles%252C%2520and%2520special%2520sauce%2520on%2520a%2520toasted%2520sesame%2520seed%2520bun.%2520The%2520burger%2520is%2520presented%2520on%2520a%2520clean%2520white%2520plate%2520with%2520a%2520minimalist%2520background.%2520Professional%2520food%2520photography%2520with%2520perfect%2520lighting%2520highlighting%2520the%2520texture%2520and%2520colors%2520of%2520the%2520ingredients.&width=600&height=400&seq=108&orientation=landscape" alt="Double Cheeseburger" class="w-full h-full object-cover object-top">
+</div>
+<div class="p-4">
+<div class="flex items-center justify-between mb-2">
+<h3 class="font-bold">Double Cheeseburger</h3>
+<span class="bg-primary/10 text-primary text-sm px-2 py-1 rounded">Popular</span>
+</div>
+<p class="text-gray-600 text-sm mb-3">Two beef patties with double American cheese, lettuce, tomato, pickles, and special sauce.</p>
+<div class="flex items-center justify-between">
+<span class="font-bold text-lg">$16.99</span>
+<button class="w-10 h-10 flex items-center justify-center bg-primary text-white rounded-full !rounded-button">
+<i class="ri-add-line"></i>
+</button>
+</div>
+</div>
+</div>
+</div>
+
+<div class="mt-8 flex justify-center">
+<div class="inline-flex rounded-md shadow-sm">
+<button class="px-4 py-2 border border-gray-300 rounded-l-lg bg-white text-gray-700 hover:bg-gray-50">Previous</button>
+<button class="px-4 py-2 border-t border-b border-gray-300 bg-primary text-white">1</button>
+<button class="px-4 py-2 border-t border-b border-gray-300 bg-white text-gray-700 hover:bg-gray-50">2</button>
+<button class="px-4 py-2 border border-gray-300 rounded-r-lg bg-white text-gray-700 hover:bg-gray-50">Next</button>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Cart Preview -->
+<div class="fixed right-6 top-32 w-72 bg-white rounded-lg shadow-lg overflow-hidden hidden lg:block">
+<div class="p-4 bg-primary text-white">
+<h3 class="font-bold text-lg">Your Cart</h3>
+<p class="text-sm">3 items</p>
+</div>
+<div class="p-4">
+<div class="space-y-4">
+<div class="flex items-center gap-3">
+<div class="w-16 h-16 bg-gray-100 rounded overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=A%2520gourmet%2520cheeseburger%2520with%2520melted%2520cheese%252C%2520fresh%2520lettuce%252C%2520tomato%252C%2520and%2520a%2520brioche%2520bun.%2520The%2520burger%2520is%2520on%2520a%2520clean%2520white%2520plate%2520with%2520a%2520minimalist%2520background.%2520Professional%2520food%2520photography%2520with%2520perfect%2520lighting%2520highlighting%2520the%2520texture%2520and%2520colors%2520of%2520the%2520ingredients.&width=100&height=100&seq=109&orientation=squarish" alt="Classic Cheeseburger" class="w-full h-full object-cover object-top">
+</div>
+<div class="flex-1">
+<h4 class="font-medium text-sm">Classic Cheeseburger</h4>
+<div class="flex justify-between items-center mt-1">
+<div class="flex items-center">
+<button class="w-5 h-5 flex items-center justify-center bg-gray-200 rounded-full text-xs">-</button>
+<span class="mx-2 text-sm">1</span>
+<button class="w-5 h-5 flex items-center justify-center bg-gray-200 rounded-full text-xs">+</button>
+</div>
+<span class="text-sm font-medium">$12.99</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-16 h-16 bg-gray-100 rounded overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=A%2520perfectly%2520baked%2520margherita%2520pizza%2520with%2520fresh%2520mozzarella%252C%2520basil%2520leaves%252C%2520and%2520tomato%2520sauce.%2520The%2520pizza%2520has%2520a%2520thin%252C%2520crispy%2520crust%2520with%2520slightly%2520charred%2520edges.%2520Professional%2520food%2520photography%2520with%2520clean%2520white%2520background%252C%2520highlighting%2520the%2520vibrant%2520colors%2520and%2520textures%2520of%2520the%2520toppings.&width=100&height=100&seq=110&orientation=squarish" alt="Margherita Pizza" class="w-full h-full object-cover object-top">
+</div>
+<div class="flex-1">
+<h4 class="font-medium text-sm">Margherita Pizza</h4>
+<div class="flex justify-between items-center mt-1">
+<div class="flex items-center">
+<button class="w-5 h-5 flex items-center justify-center bg-gray-200 rounded-full text-xs">-</button>
+<span class="mx-2 text-sm">1</span>
+<button class="w-5 h-5 flex items-center justify-center bg-gray-200 rounded-full text-xs">+</button>
+</div>
+<span class="text-sm font-medium">$14.99</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-16 h-16 bg-gray-100 rounded overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=A%2520fresh%2520and%2520vibrant%2520Caesar%2520salad%2520with%2520crisp%2520romaine%2520lettuce%252C%2520parmesan%2520cheese%2520shavings%252C%2520croutons%252C%2520and%2520Caesar%2520dressing.%2520The%2520salad%2520is%2520served%2520in%2520a%2520modern%2520white%2520bowl%2520on%2520a%2520clean%252C%2520minimalist%2520background.%2520Professional%2520food%2520photography%2520with%2520perfect%2520lighting%2520highlighting%2520the%2520freshness%2520and%2520texture%2520of%2520the%2520ingredients.&width=100&height=100&seq=111&orientation=squarish" alt="Caesar Salad" class="w-full h-full object-cover object-top">
+</div>
+<div class="flex-1">
+<h4 class="font-medium text-sm">Caesar Salad</h4>
+<div class="flex justify-between items-center mt-1">
+<div class="flex items-center">
+<button class="w-5 h-5 flex items-center justify-center bg-gray-200 rounded-full text-xs">-</button>
+<span class="mx-2 text-sm">1</span>
+<button class="w-5 h-5 flex items-center justify-center bg-gray-200 rounded-full text-xs">+</button>
+</div>
+<span class="text-sm font-medium">$10.99</span>
+</div>
+</div>
+</div>
+</div>
+
+<hr class="my-4 border-gray-200">
+
+<div class="space-y-2">
+<div class="flex justify-between text-sm">
+<span>Subtotal</span>
+<span>$38.97</span>
+</div>
+<div class="flex justify-between text-sm">
+<span>Delivery Fee</span>
+<span>$2.99</span>
+</div>
+<div class="flex justify-between font-medium">
+<span>Total</span>
+<span>$41.96</span>
+</div>
+</div>
+
+<button class="w-full bg-primary text-white py-3 rounded-lg mt-4 !rounded-button whitespace-nowrap">Proceed to Checkout</button>
+</div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-gray-800 text-white pt-12 pb-6 mt-16">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+<div>
+<a href="#" class="text-3xl font-['Pacifico'] text-white mb-4 inline-block">Ghulam Qadir Kalhoro</a>
+<p class="text-gray-400 mb-4">Delicious food, fast service, and a welcoming atmosphere. We're committed to providing the best dining experience.</p>
+<div class="flex space-x-4">
+<a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-700 hover:bg-primary transition-colors">
+<i class="ri-facebook-fill"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-700 hover:bg-primary transition-colors">
+<i class="ri-instagram-line"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-700 hover:bg-primary transition-colors">
+<i class="ri-twitter-x-line"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-700 hover:bg-primary transition-colors">
+<i class="ri-youtube-line"></i>
+</a>
+</div>
+</div>
+<div>
+<h3 class="text-lg font-bold mb-4">Quick Links</h3>
+<ul class="space-y-2">
+<li><a href="https://readdy.ai/home/55e88bb8-a86a-4adc-bd3a-ca8f4ff0c6b1/617d1b31-8964-49e8-b900-13a8e05edf97" data-readdy="true" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Menu</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Services</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Help & Support</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-bold mb-4">Contact Us</h3>
+<ul class="space-y-3">
+<li class="flex items-start">
+<div class="w-5 h-5 flex items-center justify-center mt-1 mr-3">
+<i class="ri-map-pin-line text-primary"></i>
+</div>
+<span class="text-gray-400">123 Main Street, New York, NY 10001</span>
+</li>
+<li class="flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-3">
+<i class="ri-phone-line text-primary"></i>
+</div>
+<span class="text-gray-400">(212) 555-1234</span>
+</li>
+<li class="flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-3">
+<i class="ri-mail-line text-primary"></i>
+</div>
+<span class="text-gray-400">info@savorybites.com</span>
+</li>
+<li class="flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-3">
+<i class="ri-time-line text-primary"></i>
+</div>
+<span class="text-gray-400">Mon-Sun: 11:00 AM - 10:00 PM</span>
+</li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-bold mb-4">Download App</h3>
+<p class="text-gray-400 mb-4">Get our mobile app for a better experience and exclusive offers.</p>
+<div class="flex flex-col space-y-2">
+<a href="#" class="flex items-center bg-black text-white px-4 py-2 rounded !rounded-button">
+<i class="ri-apple-fill text-2xl mr-2"></i>
+<div class="text-left">
+<div class="text-xs">Download on the</div>
+<div class="font-medium">App Store</div>
+</div>
+</a>
+<a href="#" class="flex items-center bg-black text-white px-4 py-2 rounded !rounded-button">
+<i class="ri-google-play-fill text-2xl mr-2"></i>
+<div class="text-left">
+<div class="text-xs">Get it on</div>
+<div class="font-medium">Google Play</div>
+</div>
+</a>
+</div>
+</div>
+</div>
+<hr class="border-gray-700 mb-6">
+<div class="flex flex-col md:flex-row justify-between items-center">
+<p class="text-gray-400 text-sm mb-4 md:mb-0">© 2025 Savory Bites. All rights reserved.</p>
+<div class="flex space-x-4">
+<a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Privacy Policy</a>
+<a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Terms of Service</a>
+<a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Cookie Policy</a>
+</div>
+</div>
+</div>
+</footer>
+
+<!-- Mobile Menu (Hidden by default) -->
+<div id="mobile-menu" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+<div class="bg-white h-full w-64 max-w-full">
+<div class="p-4 flex justify-between items-center border-b">
+<a href="#" class="text-2xl font-['Pacifico'] text-primary">Ghulam Qadir Kalhoro</a>
+<button id="close-menu" class="w-10 h-10 flex items-center justify-center">
+<i class="ri-close-line text-xl"></i>
+</button>
+</div>
+<nav class="p-4">
+<ul class="space-y-4">
+<li><a href="https://readdy.ai/home/55e88bb8-a86a-4adc-bd3a-ca8f4ff0c6b1/617d1b31-8964-49e8-b900-13a8e05edf97" data-readdy="true" class="block py-2 font-medium">Home</a></li>
+<li><a href="#" class="block py-2 font-medium text-primary">Menu</a></li>
+<li><a href="#" class="block py-2 font-medium">Services</a></li>
+<li><a href="#" class="block py-2 font-medium">About</a></li>
+<li><a href="#" class="block py-2 font-medium">Contact</a></li>
+<li><a href="#" class="block py-2 font-medium">Help</a></li>
+</ul>
+</nav>
+</div>
+</div>
+
+<!-- Mobile Cart Button -->
+<div class="fixed bottom-6 right-6 lg:hidden">
+<button id="mobile-cart-button" class="w-14 h-14 flex items-center justify-center bg-primary text-white rounded-full shadow-lg">
+<i class="ri-shopping-cart-line text-xl"></i>
+<span class="absolute -top-1 -right-1 bg-white text-primary text-xs w-5 h-5 flex items-center justify-center rounded-full shadow-sm">3</span>
+</button>
+</div>
+
+<!-- Mobile Cart (Hidden by default) -->
+<div id="mobile-cart" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+<div class="bg-white h-3/4 w-full absolute bottom-0 rounded-t-xl overflow-hidden">
+<div class="p-4 bg-primary text-white flex justify-between items-center">
+<h3 class="font-bold text-lg">Your Cart (3 items)</h3>
+<button id="close-cart" class="w-10 h-10 flex items-center justify-center">
+<i class="ri-close-line text-xl"></i>
+</button>
+</div>
+<div class="p-4 overflow-y-auto h-[calc(100%-160px)]">
+<div class="space-y-4">
+<div class="flex items-center gap-3">
+<div class="w-16 h-16 bg-gray-100 rounded overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=A%2520gourmet%2520cheeseburger%2520with%2520melted%2520cheese%252C%2520fresh%2520lettuce%252C%2520tomato%252C%2520and%2520a%2520brioche%2520bun.%2520The%2520burger%2520is%2520on%2520a%2520clean%2520white%2520plate%2520with%2520a%2520minimalist%2520background.%2520Professional%2520food%2520photography%2520with%2520perfect%2520lighting%2520highlighting%2520the%2520texture%2520and%2520colors%2520of%2520the%2520ingredients.&width=100&height=100&seq=109&orientation=squarish" alt="Classic Cheeseburger" class="w-full h-full object-cover object-top">
+</div>
+<div class="flex-1">
+<h4 class="font-medium">Classic Cheeseburger</h4>
+<div class="flex justify-between items-center mt-1">
+<div class="flex items-center">
+<button class="w-6 h-6 flex items-center justify-center bg-gray-200 rounded-full">-</button>
+<span class="mx-3">1</span>
+<button class="w-6 h-6 flex items-center justify-center bg-gray-200 rounded-full">+</button>
+</div>
+<span class="font-medium">$12.99</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-16 h-16 bg-gray-100 rounded overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=A%2520perfectly%2520baked%2520margherita%2520pizza%2520with%2520fresh%2520mozzarella%252C%2520basil%2520leaves%252C%2520and%2520tomato%2520sauce.%2520The%2520pizza%2520has%2520a%2520thin%252C%2520crispy%2520crust%2520with%2520slightly%2520charred%2520edges.%2520Professional%2520food%2520photography%2520with%2520clean%2520white%2520background%252C%2520highlighting%2520the%2520vibrant%2520colors%2520and%2520textures%2520of%2520the%2520toppings.&width=100&height=100&seq=110&orientation=squarish" alt="Margherita Pizza" class="w-full h-full object-cover object-top">
+</div>
+<div class="flex-1">
+<h4 class="font-medium">Margherita Pizza</h4>
+<div class="flex justify-between items-center mt-1">
+<div class="flex items-center">
+<button class="w-6 h-6 flex items-center justify-center bg-gray-200 rounded-full">-</button>
+<span class="mx-3">1</span>
+<button class="w-6 h-6 flex items-center justify-center bg-gray-200 rounded-full">+</button>
+</div>
+<span class="font-medium">$14.99</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-16 h-16 bg-gray-100 rounded overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=A%2520fresh%2520and%2520vibrant%2520Caesar%2520salad%2520with%2520crisp%2520romaine%2520lettuce%252C%2520parmesan%2520cheese%2520shavings%252C%2520croutons%252C%2520and%2520Caesar%2520dressing.%2520The%2520salad%2520is%2520served%2520in%2520a%2520modern%2520white%2520bowl%2520on%2520a%2520clean%252C%2520minimalist%2520background.%2520Professional%2520food%2520photography%2520with%2520perfect%2520lighting%2520highlighting%2520the%2520freshness%2520and%2520texture%2520of%2520the%2520ingredients.&width=100&height=100&seq=111&orientation=squarish" alt="Caesar Salad" class="w-full h-full object-cover object-top">
+</div>
+<div class="flex-1">
+<h4 class="font-medium">Caesar Salad</h4>
+<div class="flex justify-between items-center mt-1">
+<div class="flex items-center">
+<button class="w-6 h-6 flex items-center justify-center bg-gray-200 rounded-full">-</button>
+<span class="mx-3">1</span>
+<button class="w-6 h-6 flex items-center justify-center bg-gray-200 rounded-full">+</button>
+</div>
+<span class="font-medium">$10.99</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 right-0 bg-white p-4 border-t">
+<div class="flex justify-between mb-2">
+<span>Subtotal</span>
+<span>$38.97</span>
+</div>
+<div class="flex justify-between mb-4">
+<span>Delivery Fee</span>
+<span>$2.99</span>
+</div>
+<div class="flex justify-between font-bold mb-4">
+<span>Total</span>
+<span>$41.96</span>
+</div>
+<button class="w-full bg-primary text-white py-3 rounded-lg !rounded-button whitespace-nowrap">Proceed to Checkout</button>
+</div>
+</div>
+</div>
+
+<!-- Back to Top Button -->
+<button id="back-to-top" class="fixed bottom-6 left-6 w-12 h-12 flex items-center justify-center bg-primary text-white rounded-full shadow-lg opacity-0 invisible transition-all">
+<i class="ri-arrow-up-line text-xl"></i>
+</button>
+
+<script id="navigation-script">
+document.addEventListener('DOMContentLoaded', function() {
+const mobileMenuButton = document.querySelector('.md\\:hidden');
+const mobileMenu = document.getElementById('mobile-menu');
+const closeMenuButton = document.getElementById('close-menu');
+if (mobileMenuButton && mobileMenu && closeMenuButton) {
+mobileMenuButton.addEventListener('click', function() {
+mobileMenu.classList.remove('hidden');
+});
+closeMenuButton.addEventListener('click', function() {
+mobileMenu.classList.add('hidden');
+});
+}
+
+// Back to top button functionality
+const backToTopButton = document.getElementById('back-to-top');
+if (backToTopButton) {
+window.addEventListener('scroll', function() {
+if (window.pageYOffset > 300) {
+backToTopButton.classList.remove('opacity-0', 'invisible');
+backToTopButton.classList.add('opacity-100', 'visible');
+} else {
+backToTopButton.classList.remove('opacity-100', 'visible');
+backToTopButton.classList.add('opacity-0', 'invisible');
+}
+});
+backToTopButton.addEventListener('click', function() {
+window.scrollTo({
+top: 0,
+behavior: 'smooth'
+});
+});
+}
+});
+</script>
+
+<script id="filter-script">
+document.addEventListener('DOMContentLoaded', function() {
+// Price range slider
+const priceRange = document.getElementById('price-range');
+const priceValue = document.getElementById('price-value');
+if (priceRange && priceValue) {
+priceRange.addEventListener('input', function() {
+priceValue.textContent = '$' + this.value;
+});
+}
+
+// Category cards
+const categoryCards = document.querySelectorAll('.category-card');
+if (categoryCards.length > 0) {
+categoryCards.forEach(card => {
+card.addEventListener('click', function() {
+// Remove active class from all cards
+categoryCards.forEach(c => c.classList.remove('active'));
+// Add active class to clicked card
+this.classList.add('active');
+});
+});
+}
+});
+</script>
+
+<script id="cart-script">
+document.addEventListener('DOMContentLoaded', function() {
+// Mobile cart functionality
+const mobileCartButton = document.getElementById('mobile-cart-button');
+const mobileCart = document.getElementById('mobile-cart');
+const closeCartButton = document.getElementById('close-cart');
+if (mobileCartButton && mobileCart && closeCartButton) {
+mobileCartButton.addEventListener('click', function() {
+mobileCart.classList.remove('hidden');
+});
+closeCartButton.addEventListener('click', function() {
+mobileCart.classList.add('hidden');
+});
+}
+});
+</script>
+</body>
+</html>
